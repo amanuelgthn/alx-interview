@@ -3,13 +3,14 @@
 Minimum number of operations
 """
 
+
 def minOperations(n):
     """
     function that calculates minimum number of operations
     needed to result in exactly n H operations in the file
     """
 
-    if n == 1:
+    if n <= 1:
         return 0
     num_operations = 0
     copied = 0
@@ -26,3 +27,4 @@ def minOperations(n):
             num_operations += 1
             if num_chars >= n:
                 return num_operations
+    return 0
