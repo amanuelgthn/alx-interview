@@ -10,7 +10,7 @@ def minOperations(n):
     needed to result in exactly n H operations in the file
     """
 
-    if n <= 1:
+    if n <= 1 or type(n) is not int:
         return 0
     if n == 2:
         return 2
