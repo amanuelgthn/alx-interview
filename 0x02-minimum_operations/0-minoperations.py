@@ -20,7 +20,7 @@ def minOperations(n):
     copied = 1
     num_chars = 3
     for i in range(2, n):
-        if num_chars + copied == n:
+        if num_chars + copied >= n:
             num_chars += copied
             num_operations += 1
             return num_operations
