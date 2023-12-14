@@ -12,23 +12,12 @@ def minOperations(n):
 
     if n <= 1 or type(n) is not int:
         return 0
-    if n == 2:
-        return 2
-    if n == 3:
-        return 3
-    num_operations = 3
-    copied = 1
-    num_chars = 3
-    for i in range(2, n):
-        if num_chars + copied >= n:
-            num_chars += copied
-            num_operations += 1
-            return num_operations
-        else:
-            copied = num_chars
-            num_operations += 1
-            num_chars += copied
-            num_operations += 1
-            if num_chars >= n:
-                return num_operations
-    return 0
+    num_op = 0
+    i = 2
+    while (i <= n):
+        if not (n % i):
+            n = int(n / i)
+            num_op += i
+            i = 1
+        i += 1
+    return num_op
