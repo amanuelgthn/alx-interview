@@ -12,10 +12,14 @@ def minOperations(n):
 
     if n <= 1:
         return 0
-    num_operations = 0
-    copied = 0
-    num_chars = 1
-    for i in range(1, n):
+    if n == 2:
+        return 2
+    if n == 3:
+        return 3
+    num_operations = 3
+    copied = 1
+    num_chars = 3
+    for i in range(2, n):
         if num_chars + copied >= n:
             num_chars += copied
             num_operations += 1
