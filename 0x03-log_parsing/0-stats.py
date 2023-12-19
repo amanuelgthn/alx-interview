@@ -14,8 +14,11 @@ count = 0
 sorted_code = {}
 try:
     for line in sys.stdin:
-        status_code = int(line.split()[7])
-        file_size = int(line.split()[8])
+        try:
+            status_code = int(line.split()[7])
+            file_size = int(line.split()[8])
+        except ValueError:
+            pass
         if "Exit" == line.rstrip():
             break
         if status_code in possible_code:
