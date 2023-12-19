@@ -33,9 +33,8 @@ try:
             for k, v in sorted_code.items():
                 print(k, v)
             count = 0
-finally:
+except KeyboardInterrupt as e:
     print("File size:", sum_file_size)
     for k, v in sorted_code.items():
         print(k, v)
-
-
+    raise
