@@ -19,8 +19,6 @@ try:
             file_size = int(line.split()[8])
         except Exception:
             pass
-        if "Exit" == line.rstrip():
-            break
         if status_code in possible_codes:
             if status_code not in code_value.keys():
                 code_value[status_code] = 1
@@ -28,13 +26,13 @@ try:
         sum_file_size += file_size
         count += 1
         if count == 10:
-            print("File size:", sum_file_size)
+            print("File size: {}".format(sum_file_size))
             sorted_code = dict(sorted(code_value.items()))
             for k, v in sorted_code.items():
                 print(k, v)
             count = 0
 except KeyboardInterrupt as e:
-    print("File size:", sum_file_size)
+    print("File size: {}".format(sum_file_size))
     for k, v in sorted_code.items():
         print(k, v)
     raise
