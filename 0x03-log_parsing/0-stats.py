@@ -5,9 +5,9 @@ Log Parsing
 
 
 import sys
-import re
 
-possible_code = [200, 301, 400, 401, 403, 404, 405, 500]
+
+possible_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 sum_file_size = 0
 code_value = {}
 count = 0
@@ -17,11 +17,11 @@ try:
         try:
             status_code = int(line.split()[7])
             file_size = int(line.split()[8])
-        except ValueError:
+        except Exception:
             pass
         if "Exit" == line.rstrip():
             break
-        if status_code in possible_code:
+        if status_code in possible_codes:
             if status_code not in code_value.keys():
                 code_value[status_code] = 1
             code_value[status_code] += 1
