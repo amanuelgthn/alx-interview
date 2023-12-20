@@ -15,6 +15,8 @@ sorted_code = {}
 try:
     for line in sys.stdin:
         try:
+            if len(line.split()) != 9:
+                pass
             status_code = int(line.split()[7])
             file_size = int(line.split()[8])
         except Exception:
@@ -29,10 +31,13 @@ try:
             print("File size: {}".format(sum_file_size))
             sorted_code = dict(sorted(code_value.items()))
             for k, v in sorted_code.items():
-                print("{}: {}".format(k, v))
+                if sorted_code[k] != 0:
+                    print("{}: {}".format(k, v))
+                code_value[k] = 0
             count = 0
 except KeyboardInterrupt as e:
     print("File size: {}".format(sum_file_size))
     for k, v in sorted_code.items():
-        print("{}: {}".format(k, v))
+        if sorted_code[k] != 0:
+            print("{}: {}".format(k, v))
     raise
