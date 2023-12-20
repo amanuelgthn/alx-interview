@@ -9,7 +9,7 @@ import sys
 
 possible_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 sum_file_size = 0
-code_value = {}
+code_value = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 count = 0
 sorted_code = {}
 try:
@@ -22,8 +22,6 @@ try:
         except Exception:
             pass
         if status_code in possible_codes:
-            if status_code not in code_value.keys():
-                code_value[status_code] = 1
             code_value[status_code] += 1
         sum_file_size += file_size
         count += 1
