@@ -25,7 +25,7 @@ try:
             code_value[status_code] += 1
         sum_file_size += file_size
         count += 1
-        if count == 10:
+        if count == 9:
             print("File size: {}".format(sum_file_size))
             sorted_code = dict(sorted(code_value.items()))
             for k, v in sorted_code.items():
