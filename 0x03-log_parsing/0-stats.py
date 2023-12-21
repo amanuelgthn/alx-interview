@@ -34,4 +34,3 @@ finally:
     for k in sorted(code_value.keys()):
         if code_value[k] != 0:
             print("{}: {}".format(k, code_value[k]))
-    raise
