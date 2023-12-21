@@ -17,6 +17,7 @@ if __name__ == "__main__":
         for line in stdin:
             try:
                 args = line.split(" ")
+                print(args)
                 if len(args) != 9:
                     pass
                 if args[-2] in list_status_codes:

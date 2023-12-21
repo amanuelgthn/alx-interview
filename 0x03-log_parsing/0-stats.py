@@ -13,18 +13,17 @@ code_value = {"200": 0, "301": 0, "400": 0, "401": 0,
 count = 0
 try:
     for line in sys.stdin:
+        parsed = line.split(" ")
+        if len(parsed) != 9:
+            pass
+        status_code = parsed[-2]
         try:
-            parsed = line.split()
-            if len(parsed) != 9:
-                pass
-            status_code = parsed[7]
-            file_size = int(parsed[8])
-            count += 1
+            sum_file_size += int(parsed[-1])
         except Exception:
             pass
+        count += 1
         if status_code in code_value.keys():
             code_value[status_code] += 1
-            sum_file_size += file_size
         if count % 10 == 0:
             print("File size: {}".format(sum_file_size))
             for k in sorted(code_value.keys()):
