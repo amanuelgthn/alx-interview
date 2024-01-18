@@ -7,7 +7,6 @@ script that prints all characters of a star war movie
  You must use the request module
 */
 
-const process = require('node:process');
 const request = require('request');
 
 if (!process.argv[2]) {
@@ -15,10 +14,9 @@ if (!process.argv[2]) {
 }
 const position = process.argv[2];
 const url = 'https://swapi-api.alx-tools.com/api/films/' + position + '/';
-console.log(url);
 request(url, (err, response) => {
   if (err) {
-    console.log(err);S
+    console.log(err);
   } else {
     const jsonData = JSON.stringify(response);
     const jsonNew = JSON.parse(jsonData);
