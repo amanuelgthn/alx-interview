@@ -15,6 +15,10 @@ connected to the water surrounding the island).
 
 
 def island_perimeter(grid):
+    """
+    function that returns the perimeter of the island described in
+    gird
+    """
     count = 0
     length = len(grid)
     length_row = len(grid[0])
