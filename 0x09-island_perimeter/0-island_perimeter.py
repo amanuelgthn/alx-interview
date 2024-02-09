@@ -25,24 +25,14 @@ def island_perimeter(grid):
     for i in range(len(grid)):
         for j in range(length_row):
             if (grid[i][j] == 1):
-                try:
-                    if (grid[i-1][j] == 0):
-                        count += 1
-                except IndexError:
+                if i == 0 or j == 0 or j == length_row - 1 or i == length - 1:
                     count += 1
-                try:
-                    if (grid[i+1][j] == 0):
-                        count += 1
-                except IndexError:
+                if (grid[i-1][j] == 0):
                     count += 1
-                try:
-                    if (grid[i][j+1] == 0):
-                        count += 1
-                except IndexError:
+                if i + 1 < length and (grid[i+1][j] == 0):
                     count += 1
-                try:
-                    if (grid[i][j-1] == 0):
-                        count += 1
-                except IndexError:
+                if j + 1 < length_row and (grid[i][j+1] == 0):
+                    count += 1
+                if i + 1 < length and (grid[i][j-1] == 0):
                     count += 1
     return count
