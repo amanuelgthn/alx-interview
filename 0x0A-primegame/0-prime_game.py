@@ -4,38 +4,67 @@
 
 def isWinner(x, nums):
     """function that returns the name of that won the most rounds"""
-    maria = 0
-    ben = 0
-    bool = True
-    for num in nums:
-        j = 2
-        if num == 1:
-            ben += 1
-        if num == 2:
-            maria += 1
-        for number in nums:
-            if number // num == 0:
-                nums.pop(number)
-        if isPrime(num, 2):
-            if bool:
-                maria += 1
-                bool = False
+    Maria = 0
+    Ben = 0
+    if (x < 1 or x != len(nums)):
+        return None
+    for n in nums:
+        winner = primeGame(n)
+        if winner == 1:
+            Maria += 1
+        elif winner == 2:
+            Ben += 1
+    if Maria == Ben:
+        return None
+    elif Maria > Ben:
+        return "Maria"
+    return "Ben"
+
+
+def primeGame(n):
+    """
+    Determines the winner of a single round of the Prime Game
+
+    parameters:
+        n [int]:
+            the maximum number of the set of consecutive ints
+                from 1 up to and including n
+
+    returns:
+        1 if the first player wins the game
+        2 if the second player wins the game
+    """
+    if (n < 1):
+        return None
+    if (n == 1):
+        return (2)
+    numbers = list(range(n + 1))
+    player = 1
+    prime = 2
+    primes_used = []
+    for num in numbers:
+        if (num % prime == 0):
+            numbers.remove(num)
+    primes_used.append(prime)
+    prime = 3
+    while (numbers != [1]):
+        if (player == 1):
+            player = 2
+        else:
+            player = 1
+        for num in numbers:
+            if (num % prime == 0):
+                numbers.remove(num)
+        primes_used.append(prime)
+        prime += 2
+        flag = 1
+        while (flag):
+            for num in primes_used:
+                if (prime % num == 0):
+                    prime += 2
+                    break
             else:
-                ben += 1
-                bool = True
-    """ print("Maria: {}, Ben: {}".format(maria, ben)) """
-    if ben > maria:
-        return "Ben"
-    return "Maria"
-
-
-def isPrime(num, i):
-    """"function to check if a prime number is prime"""
-    if (num == 1 or num == 0):
-        return False
-    if (num == i):
-        return True
-    if (num % i == 0):
-        return False
-    i += 1
-    return isPrime(num, i)
+                flag = 0
+    if (player == 1):
+        return 1
+    return 2
