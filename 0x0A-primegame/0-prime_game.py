@@ -23,13 +23,6 @@ def isWinner(x, nums):
 
 def primeGame(n):
     """
-    Determines the winner of a single round of the Prime Game
-
-    parameters:
-        n [int]:
-            the maximum number of the set of consecutive ints
-                from 1 up to and including n
-
     returns:
         1 if the first player wins the game
         2 if the second player wins the game
